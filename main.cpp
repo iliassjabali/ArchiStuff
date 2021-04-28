@@ -1,5 +1,9 @@
 #include <iostream>
+#include <bitset>
+#include <queue>
 
 int main() {
-  std::cout << "Hello World!\n";
+	using namespace std;
+	bitset<5> b1 (5);
+	cout << b1.size() <<endl;
 }
