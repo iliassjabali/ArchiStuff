@@ -1,12 +1,16 @@
 #include <iostream>
 #include <bitset>
+using namespace std;
 
-std::string thebinary (std::bitset<8> B1,std::bitset<8> B )
+string BinnaryMulti (int a, int b ){
+	bitset<8> B1 (a),  B2 (b);
+	bitset<8> sum = B1&= B2;
+
+	return sum.to_string();
+}
 
 int main() {
-	using namespace std;
-	bitset<8> b1 (5);
-	cout << b1.to_string() <<endl;
-	cout << bitset<8> (40);
-
+	
+	cout << BinnaryMulti(20, 4 ) <<endl;
+	return 0;
 }
