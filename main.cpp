@@ -1,12 +1,11 @@
 #include <iostream>
 #include <bitset>
-using namespace std;
 
-bitset<8> operator + ( const bitset<8> num1, const bitset<8> num2 ){
+std::bitset<8> operator + ( const std::bitset<8> num1, const std::bitset<8> num2 ){
 	//printf("We are adding the following two numbers %lu+%lu\n",num1.to_ulong(), num2.to_ulong()); 
-	//cout << "Binnary 1:\t" << num1 << "\t Binnary  2:\t" << num2 << endl;
-	bitset<8> sum, carry; 
-	// cout << "The size is " << num1.size()<< endl;
+	//std::cout << "Binnary 1:\t" << num1 << "\t Binnary  2:\t" << num2 << std::endl;
+	std::bitset<8> sum, carry; 
+	// std::cout << "The size is " << num1.size()<< std::endl;
 	for (int i = 0; i< num1.size(); i++){
 		carry[i+1] = num1[i]&num2[i];
 		sum[i] = num1[i]^num2[i];
@@ -30,28 +29,28 @@ bitset<8> operator + ( const bitset<8> num1, const bitset<8> num2 ){
 				sum[i] = carry[i];	//so we don't have caries 
 			}
 		}
-		//cout<<"Carry:\t" << carry << endl << "Sum:\t" << sum  << endl;
+		//std::cout<<"Carry:\t" << carry << std::endl << "Sum:\t" << sum  << std::endl;
 	} 
-	//cout<<"Carry:\t" << carry << endl << "Sum:\t" << sum  << endl;
+	//std::cout<<"Carry:\t" << carry << std::endl << "Sum:\t" << sum  << std::endl;
 	return sum;
 }
-bitset<8> operator + ( const bitset<8> num1, const int num2 ){
+std::bitset<8> operator + ( const std::bitset<8> num1, const int num2 ){
 	//just adds a int to bit 
 	// using overloading 
-	return num1 + bitset<8>(num2);
+	return num1 + std::bitset<8>(num2);
 }
-bitset<8> operator * ( const bitset<8> num1, const bitset<8> num2 ){
+std::bitset<8> operator * ( const std::bitset<8> num1, const std::bitset<8> num2 ){
 	// first step is to decalre the sum which should be all zeros 
-	bitset<8> sum (0), add = num1 ; 
+	std::bitset<8> sum (0), add = num1 ; 
 	for(  int i = 0; i < num2.size(); i++ ){
-		/*cout << "Loop number: " << i + 1;
+		/*std::cout << "Loop number: " << i + 1;
 		if(num2[i] == 1) {
-			cout << "\tAdding" <<endl;
+			std::cout << "\tAdding" <<std::endl;
 		}
 		else  {
-			cout << "\tNot Adding" <<endl;
+			std::cout << "\tNot Adding" <<std::endl;
 		}
-		cout << "Sum:\t" << sum << "\nADD:\t" << add << endl;
+		std::cout << "Sum:\t" << sum << "\nADD:\t" << add << std::endl;
 		*/
 		//now we should go over each bit of the num2 and add the numbers only if it equales 1
 		if(num2[i] == 1){
@@ -65,23 +64,24 @@ bitset<8> operator * ( const bitset<8> num1, const bitset<8> num2 ){
 	}
 	return sum;
 }
-bitset<8> operator * ( const bitset<8> num1, const int num2 ){
+std::bitset<8> operator * ( const std::bitset<8> num1, const int num2 ){
 	//just multiplication a int to bit 
 	// using overloading 
-	return num1 * bitset<8>(num2);
+	return num1 * std::bitset<8>(num2);
 }
 
-bitset<8> multiplyTwoBin ( const int N1, const int N2){
-	bitset<8> B1 (N1),  B2 (N2);
+std::bitset<8> multiplyTwoBin ( const int N1, const int N2){
+	std::bitset<8> B1 (N1),  B2 (N2);
 	printf("Multiplaying %lu*%lu\n", B1.to_ulong(), B2.to_ulong());
-	cout << "Binnary 1:\t" << B1 << "\t Binnary  2:\t" << B2 << endl;
+	std::cout << "Binnary 1:\t" << B1 << "\t Binnary  2:\t" << B2 << std::endl;
 	return B1 * B2;
 }
 
 int main() {
 	unsigned int N1, N2;
-	cin >> N1 >> N2;
-	bitset<8> tmp = multiplyTwoBin(N1, N2);
-	cout<<"The function will give us" <<endl<< tmp << "\tWhich is\t" << tmp.to_ulong ()<<endl; //no neeed
+	std::cin >> N1 >> N2;
+	std::bitset<8> tmp = multiplyTwoBin(N1, N2);
+	std::cout<<"The function will give us" <<std::endl<< tmp << "\tWhich is\t" << tmp.to_ulong ()<<std::endl; //no neeed
 	return 0;
 }
+
