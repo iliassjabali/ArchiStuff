@@ -68,7 +68,7 @@ bitset<8> operator * ( const bitset<8> num1, const bitset<8> num2 ){
 	return sum;
 }
 bitset<8> operator * ( const bitset<8> num1, const int num2 ){
-	//just adds a int to bit 
+	//just multiplication a int to bit 
 	// using overloading 
 	return num1 * bitset<8>(num2);
 }
