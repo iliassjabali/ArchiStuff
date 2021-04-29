@@ -1,7 +1,5 @@
 #include <iostream>
 #include <bitset>
-#include <typeinfo>
-#include <string>
 using namespace std;
 
 bitset<8> operator + ( const bitset<8> num1, const bitset<8> num2 ){
@@ -42,7 +40,6 @@ bitset<8> operator + ( const bitset<8> num1, const int num2 ){
 	// using overloading 
 	return num1 + bitset<8>(num2);
 }
-
 bitset<8> operator * ( const bitset<8> num1, const bitset<8> num2 ){
 	// first step is to decalre the sum which should be all zeros 
 	bitset<8> sum (0), add = num1 ; 
@@ -54,7 +51,8 @@ bitset<8> operator * ( const bitset<8> num1, const bitset<8> num2 ){
 		else  {
 			cout << "\tNot Adding" <<endl;
 		}
-		cout << "Sum:\t" << sum << "\nADD:\t" << add << endl;*/
+		cout << "Sum:\t" << sum << "\nADD:\t" << add << endl;
+		*/
 		//now we should go over each bit of the num2 and add the numbers only if it equales 1
 		if(num2[i] == 1){
 			sum = sum + add;
@@ -73,12 +71,17 @@ bitset<8> operator * ( const bitset<8> num1, const int num2 ){
 	return num1 * bitset<8>(num2);
 }
 
-int main() {
-	unsigned int N1 = 96, N2= 2;
+bitset<8> multiplyTwoBin ( const int N1, const int N2){
 	bitset<8> B1 (N1),  B2 (N2);
-	printf("Multiplaying %d*%d\n", N1, N2);
+	printf("Multiplaying %lu*%lu\n", B1.to_ulong(), B2.to_ulong());
 	cout << "Binnary 1:\t" << B1 << "\t Binnary  2:\t" << B2 << endl;
-	bitset<8>  tmp = B1 * B2;
-	cout<<" The function will give us" <<endl<< tmp  << "\tWhich is\t" << tmp.to_ulong ()<<endl; //no neeed
+	return B1 * B2;
+}
+
+int main() {
+	unsigned int N1, N2;
+	cin >> N1 >> N2;
+	bitset<8> tmp = multiplyTwoBin(N1, N2);
+	cout<<"The function will give us" <<endl<< tmp << "\tWhich is\t" << tmp.to_ulong ()<<endl; //no neeed
 	return 0;
 }
